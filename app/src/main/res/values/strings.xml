@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Panteras Gym</string>
+    <string name="stringTituloLogin">Iniciar sesión</string>
+    <string name="stringCorreo">Correo electrónico</string>
+    <string name="stringContrasena">Contraseña</string>
+    <string name="stringRecordar">Recordar usuario</string>
+    <string name="stringIngresar">Ingresar</string>
+    <string name="stringRegistrarse">Registrarse</string>
+    <string name="stringRegresar">Regresar</string>
+
+    <string name="stringTituloRegistro">Registro</string>
+    <string name="stringNombre">Nombre</string>
+    <string name="stringEdad">Edad</string>
+    <string name="stringPeso">Peso (kg)</string>
+    <string name="stringAltura">Altura (m)</string>
+    <string name="stringRegistrar">Registrar</string>
+
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_cerrar_sesion">Cerrar sesión</string>
+
+    <string name="menu_principal">Pantalla principal</string>
+    <string name="menu_rutinas_personales">Rutinas personales</string>
+    <string name="menu_rutinas_recomendadas">Rutinas recomendadas</string>
+    <string name="menu_progreso">Progreso</string>
+    <string name="menu_calculadora">Calculadora IMC</string>
+    <string name="menu_tema">Tema</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColor">#FF0740C5</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.LightBotones" parent="AppTheme">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:radius">10dp</item>
+        <item name="android:backgroundTint">#FF0740C5</item>
+    </style>
+    <!-- _____________________________________________________________ -->
+    <style name="TextInputLayout.Light" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">#FF0740C5</item>
+        <item name="hintTextColor">#1E0150</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:windowBackground">#FF242527</item>
+    </style>
+
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

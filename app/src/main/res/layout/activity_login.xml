@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".acceso.LoginActivity">
+
+    <TextView
+        android:id="@+id/lblTituloLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/stringTituloLogin"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCorreo"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="25dp"
+        android:gravity="bottom|clip_horizontal"
+        android:orientation="vertical" >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lyt_dtx_correo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="274dp"
+            android:layout_height="55dp"
+            android:textColorHint="#FF0740C5"
+            app:hintTextColor="#1E0150"
+            app:boxStrokeColor="@color/text_input_box_stroke">
+
+            <EditText
+                android:id="@+id/edtCorreo"
+                android:layout_width="274dp"
+                android:layout_height="55dp"
+                android:hint="@string/stringCorreo"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutContrasena"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:gravity="bottom|clip_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lyt_dtx_contrasena"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="274dp"
+            android:layout_height="55dp"
+            android:textColorHint="#FF0740C5"
+            app:hintTextColor="#1E0150"
+            app:boxStrokeColor="@color/text_input_box_stroke">
+
+            <EditText
+                android:id="@+id/edtContrasena"
+                android:layout_width="274dp"
+                android:layout_height="55dp"
+                android:hint="@string/stringContrasena"
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/stRecordar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/stringRecordar"
+        android:textColor="#AAAAAA" />
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringIngresar"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        style="@style/AppTheme.LightBotones"/>
+
+    <TextView
+        android:id="@+id/lblRegistrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stringRegistrarse"
+        android:layout_marginTop="15dp" />
+
+</LinearLayout>

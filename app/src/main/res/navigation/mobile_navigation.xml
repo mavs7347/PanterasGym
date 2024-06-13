@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_pantalla_principal">
+
+    <fragment
+        android:id="@+id/nav_pantalla_principal"
+        android:name="com.proyectofinal.panterasgym.opciones.PantallaPrincipalFragment"
+        android:label="@string/menu_principal"
+        tools:layout="@layout/fragment_pantalla_principal" />
+
+    <fragment
+        android:id="@+id/nav_rutinas_personales"
+        android:name="com.proyectofinal.panterasgym.opciones.RutinasPersonalesFragment"
+        android:label="@string/menu_rutinas_personales"
+        tools:layout="@layout/fragment_rutinas_personales" />
+
+    <fragment
+        android:id="@+id/nav_rutinas_recomendadas"
+        android:name="com.proyectofinal.panterasgym.opciones.RutinasRecomendadasFragment"
+        android:label="@string/menu_rutinas_recomendadas"
+        tools:layout="@layout/fragment_rutinas_recomendadas" />
+
+    <fragment
+        android:id="@+id/nav_progreso"
+        android:name="com.proyectofinal.panterasgym.opciones.ProgresoFragment"
+        android:label="@string/menu_progreso"
+        tools:layout="@layout/fragment_progreso" />
+
+    <fragment
+        android:id="@+id/nav_calculadora"
+        android:name="com.proyectofinal.panterasgym.opciones.CalculadoraFragment"
+        android:label="@string/menu_calculadora"
+        tools:layout="@layout/fragment_calculadora" />
+
+    <fragment
+        android:id="@+id/nav_tema"
+        android:name="com.proyectofinal.panterasgym.opciones.TemaFragment"
+        android:label="@string/menu_tema"
+        tools:layout="@layout/fragment_tema" />
+
+</navigation>

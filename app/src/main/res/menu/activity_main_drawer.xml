@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pantalla_principal"
+            android:title="@string/menu_principal" />
+        <item
+            android:id="@+id/nav_rutinas_personales"
+            android:title="@string/menu_rutinas_personales" />
+        <item
+            android:id="@+id/nav_rutinas_recomendadas"
+            android:title="@string/menu_rutinas_recomendadas" />
+        <item
+            android:id="@+id/nav_progreso"
+            android:title="@string/menu_progreso" />
+        <item
+            android:id="@+id/nav_calculadora"
+            android:title="@string/menu_calculadora" />
+        <item
+            android:id="@+id/nav_tema"
+            android:title="@string/menu_tema" />
+    </group>
+</menu>

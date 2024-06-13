@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#1D42FF" android:state_focused="true" /> <!-- Color cuando está enfocado -->
+    <item android:color="#002AFF" android:state_hovered="true" /> <!-- Color cuando está en hover!!! -->
+    <item android:color="#002AFF" android:state_enabled="true" /> <!-- Color por defecto!!! -->
+    <item android:color="#303030" /> <!-- Color cuando no está enfocado -->
+</selector>
