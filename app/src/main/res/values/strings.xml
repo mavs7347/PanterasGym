@@ -28,6 +28,10 @@
     <string name="menu_progreso">Progreso</string>
     <string name="menu_calculadora">Calculadora IMC</string>
     <string name="menu_tema">Tema</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="stringTituloCalculadora">Calculadora de IMC</string>
+    <string name="stringTituloPeso">Peso (kg)</string>
+    <string name="stringTituloAltura">Altura (m)</string>
+    <string name="stringTIndiceMasaCorporal">IMC: </string>
+    <string name="stringEstado">Estado: </string>
 </resources>

@@ -3,6 +3,7 @@
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textColor">#FF0740C5</item>
         <item name="android:windowBackground">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FF242527</item>
     </style>
 
     <style name="AppTheme.LightBotones" parent="AppTheme">
