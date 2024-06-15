@@ -1,6 +1,7 @@
 package com.proyectofinal.panterasgym.acceso
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -30,6 +31,26 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var regresar: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+        if (appPreferences.contains("theme")) {
+            if (appPreferences.getInt("theme", 0) == 1) {
+                setTheme(R.style.AppTheme)
+            } else if (appPreferences.getInt("theme", 0) == 2) {
+                setTheme(R.style.AppThemeDark)
+            } else if (appPreferences.getInt("theme", 0) == 3) {
+                val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                when (nightModeFlags) {
+                    Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                    Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+                }
+            }
+        } else {
+            val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+            }
+        }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_registro)

@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".opciones.TemaFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Tema de aplicacion" />
+        android:id="@+id/lblTituloTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="@string/stringTituloTema"
+        android:textSize="26sp"
+        android:textColor="?android:attr/textColor" />
 
-</FrameLayout>
+    <RadioGroup
+        android:id="@+id/rbtnGroupThemes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="80dp" >
+
+        <RadioButton
+            android:id="@+id/rbtnLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringTemaLight"
+            android:fontFamily="serif"
+            android:textSize="16sp"
+            android:checked="false"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <RadioButton
+            android:id="@+id/rbtnDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringTemaDark"
+            android:fontFamily="serif"
+            android:textSize="16sp"
+            android:checked="false"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <RadioButton
+            android:id="@+id/rbtnDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringTemaDefault"
+            android:fontFamily="serif"
+            android:textSize="16sp"
+            android:checked="true"
+            android:textColor="?android:attr/textColorSecondary" />
+    </RadioGroup>
+
+</LinearLayout>

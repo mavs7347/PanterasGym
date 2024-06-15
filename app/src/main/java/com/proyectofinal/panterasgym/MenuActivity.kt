@@ -2,6 +2,7 @@ package com.proyectofinal.panterasgym
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -41,7 +42,41 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appPreferences: SharedPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+        if (appPreferences.contains("theme")) {
+            //Toast.makeText(this, "${appPreferences.getInt("theme", 0)}", Toast.LENGTH_LONG).show()
+            if (appPreferences.getInt("theme", 0) == 1) {
+                setTheme(R.style.AppTheme)
+            } else if (appPreferences.getInt("theme", 0) == 2) {
+                setTheme(R.style.AppThemeDark)
+            } else if (appPreferences.getInt("theme", 0) == 3) {
+                val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                when (nightModeFlags) {
+                    Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                    Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+                }
+            }
+        } else {
+            val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+            }
+        }
         super.onCreate(savedInstanceState)
+        /*
+        val sharedPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+        if (sharedPreferences.getBoolean("isChangingTheme", false)) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_tema, TemaFragment())
+            transaction.commit()
+
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("isChangingTheme", false)
+            editor.apply()
+        }
+        */
+
 
         clienteViewModel = ViewModelProvider(this).get(ClienteViewModel::class.java)
         clienteViewModel.cliente.observe(this, Observer { cliente ->
@@ -109,9 +144,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             objCliente.cAltura = prefs.getFloat("cAltura", 0.0f)!!
             objCliente.cRecordar = prefs.getBoolean("cRecordar", false)!!
             val gson = Gson()
-            val rutinasJson = prefs.getString("cRutinas", "")
+            val rutinasJson = prefs.getString("cRutinas", "")!!
             val type = object : TypeToken<List<Rutina>>() {}.type
-            objCliente.cRutinas = gson.fromJson(rutinasJson, type)
+            objCliente.cRutinas = gson.fromJson(rutinasJson, type)!!
         }
     }
     override fun onSupportNavigateUp(): Boolean {
@@ -148,7 +183,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onOptionsItemSelected(item)
     }
     private fun cerrarSesion() {
-        val preferences: SharedPreferences = getSharedPreferences("preferenciasUsuario", MODE_PRIVATE)
+        val preferences: SharedPreferences = getSharedPreferences("Datos usuario", MODE_PRIVATE)
         val editor: SharedPreferences.Editor = preferences.edit()
         editor.clear()
         editor.apply()

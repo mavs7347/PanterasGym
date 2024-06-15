@@ -2,33 +2,30 @@
 
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textColor">#FF0740C5</item>
+        <item name="android:textColorSecondary">#1E0150</item>
+        <item name="android:textColorSecondaryInverse">#06349F</item>
+        <item name="android:textColorTertiary">#FFFFFF</item>
+        <item name="android:textColorTertiaryInverse">#303030</item>
+        <item name="android:textColorHint">#FF0740C5</item>
+
         <item name="android:windowBackground">#FFFFFF</item>
-        <item name="android:textColorSecondary">#FF242527</item>
+        <item name="android:itemBackground">#EDEDED</item>
+    </style>
+    <style name="AppThemeDark" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColor">#759FFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="android:textColorSecondaryInverse">#4D83FF</item>
+        <item name="android:textColorTertiary">#000000</item>
+        <item name="android:textColorTertiaryInverse">#AFAFAF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:itemBackground">#EDEDED</item>
     </style>
 
     <style name="AppTheme.LightBotones" parent="AppTheme">
-        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textColor">#DCDCDC</item>
         <item name="android:radius">10dp</item>
         <item name="android:backgroundTint">#FF0740C5</item>
-    </style>
-    <!-- _____________________________________________________________ -->
-    <style name="TextInputLayout.Light" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColorHint">#FF0740C5</item>
-        <item name="hintTextColor">#1E0150</item>
-    </style>
-
-    <style name="AppTheme.Dark" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:windowBackground">#FF242527</item>
-    </style>
-
-
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
