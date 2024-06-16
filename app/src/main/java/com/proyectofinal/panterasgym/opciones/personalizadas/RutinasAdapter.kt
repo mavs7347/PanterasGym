@@ -1,14 +1,13 @@
-package com.example.grid
+package com.proyectofinal.panterasgym.opciones.personalizadas
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
+import com.proyectofinal.panterasgym.R
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.app.AlertDialog
+import com.proyectofinal.panterasgym.clases.Rutina
 
 class RutinasAdapter(
     private val rutinas: List<Rutina>,
@@ -28,10 +27,10 @@ class RutinasAdapter(
 
     override fun onBindViewHolder(holder: RutinaViewHolder, position: Int) {
         val rutina = rutinas[position]
-        holder.tvNombreRutina.text = rutina.nombre
-        holder.tvDescripcion.text = rutina.descripcion
-        holder.tvFechaCreacion.text = rutina.fechaCreacion
-        holder.tvDuracion.text = rutina.duracion
+        holder.tvNombreRutina.text = rutina.rNombre
+        holder.tvDescripcion.text = rutina.rDescripcion
+        holder.tvFechaCreacion.text = rutina.rCreacion
+        holder.tvDuracion.text = rutina.rDuracion
 
         holder.btnVerEjercicios.setOnClickListener {
             listener.onVerEjerciciosClick(position)
@@ -40,7 +39,7 @@ class RutinasAdapter(
             listener.onEliminarClick(position)
         }
         holder.btnModificarRutina.setOnClickListener {
-            listener.onModificarClick(position)
+            listener.onModificarClick   (position)
         }
     }
 
@@ -58,4 +57,3 @@ class RutinasAdapter(
         val btnModificarRutina: Button = itemView.findViewById(R.id.btn_modificar)
     }
 }
-

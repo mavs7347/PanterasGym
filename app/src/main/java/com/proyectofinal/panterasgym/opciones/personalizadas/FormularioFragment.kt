@@ -1,20 +1,18 @@
-package com.example.grid
+package com.proyectofinal.panterasgym.opciones.personalizadas
 
 import android.os.Bundle
+import androidx.fragment.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import android.widget.LinearLayout
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.app.AlertDialog
-
-
+import java.util.ArrayList
+import com.proyectofinal.panterasgym.R
+import com.proyectofinal.panterasgym.clases.Ejercicio
+import com.proyectofinal.panterasgym.clases.Rutina
 class FormularioFragment : DialogFragment() {
 
     private var nombreRutina: String? = null
@@ -64,7 +62,6 @@ class FormularioFragment : DialogFragment() {
             rEjercicios = it.getParcelableArrayList<Ejercicio>(ARG_EJERCICIOS)?.toMutableList() ?: mutableListOf()
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -124,17 +121,21 @@ class FormularioFragment : DialogFragment() {
         dialogBuilder.setView(dialogView)
 
         val etNombreEjercicio = dialogView.findViewById<EditText>(R.id.et_nombre_ejercicio)
+        val etDescripcionEjercicio = dialogView.findViewById<EditText>(R.id.et_descripcion_ejercicio)
         val etRepeticiones = dialogView.findViewById<EditText>(R.id.et_repeticiones)
+        val etPeso = dialogView.findViewById<EditText>(R.id.et_peso)
         val etSeries = dialogView.findViewById<EditText>(R.id.et_series)
 
         dialogBuilder.setTitle("Agregar Ejercicio")
         dialogBuilder.setPositiveButton("Agregar") { _, _ ->
             val nombreEjercicio = etNombreEjercicio.text.toString()
+            val descripcionEjercicio = etDescripcionEjercicio.text.toString()
             val repeticiones = etRepeticiones.text.toString().toIntOrNull() ?: 0
+            val peso = etPeso.text.toString().toFloatOrNull() ?: 0f
             val series = etSeries.text.toString().toIntOrNull() ?: 0
 
-            if (nombreEjercicio.isNotEmpty() && repeticiones > 0 && series > 0) {
-                val ejercicio = Ejercicio(nombreEjercicio, repeticiones, series)
+            if (nombreEjercicio.isNotEmpty() && descripcionEjercicio.isNotEmpty() && repeticiones > 0 && peso > 0 && series > 0) {
+                val ejercicio = Ejercicio(nombreEjercicio, descripcionEjercicio, repeticiones, peso, series)
                 rEjercicios.add(ejercicio)
                 // Aquí podrías actualizar un RecyclerView para mostrar los ejercicios agregados, si es necesario
             } else {
@@ -147,4 +148,3 @@ class FormularioFragment : DialogFragment() {
         alertDialog.show()
     }
 }
-

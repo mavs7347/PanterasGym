@@ -26,6 +26,7 @@ import com.proyectofinal.panterasgym.acceso.LoginActivity
 import com.proyectofinal.panterasgym.clases.Cliente
 import com.proyectofinal.panterasgym.clases.Rutina
 import com.proyectofinal.panterasgym.databinding.ActivityMenuBinding
+import com.proyectofinal.panterasgym.opciones.personalizadas.RutinasFragment
 import com.proyectofinal.panterasgym.opciones.CalculadoraFragment
 import com.proyectofinal.panterasgym.opciones.PantallaPrincipalFragment
 import com.proyectofinal.panterasgym.opciones.ProgresoFragment
@@ -199,7 +200,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragment = PantallaPrincipalFragment()
             }
             R.id.nav_rutinas_personales -> {
-                fragment = RutinasPersonalesFragment()
+                fragment = RutinasFragment()
             }
             R.id.nav_rutinas_recomendadas -> {
                 fragment = RutinasRecomendadasFragment()
