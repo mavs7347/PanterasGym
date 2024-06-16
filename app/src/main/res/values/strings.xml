@@ -28,6 +28,9 @@
     <string name="menu_progreso">Progreso</string>
     <string name="menu_calculadora">Calculadora IMC</string>
     <string name="menu_tema">Tema</string>
+
+    <string name="rutinas_recomendadas_descripcion">Descripcion de las Rutinas recomendadas: </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
