@@ -1,0 +1,48 @@
+<!-- fragment_formulario.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_nombre_rutina"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nombre de la rutina"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Descripción"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_fecha_creacion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Fecha de creación"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/et_duracion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Duración"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_agregar_ejercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Ejercicio" />
+
+    <Button
+        android:id="@+id/btn_agregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Rutina" />
+
+</LinearLayout>
