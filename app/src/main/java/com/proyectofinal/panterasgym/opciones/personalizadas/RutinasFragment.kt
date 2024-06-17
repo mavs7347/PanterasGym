@@ -2,6 +2,8 @@ package com.proyectofinal.panterasgym.opciones.personalizadas
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,20 +13,38 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import com.proyectofinal.panterasgym.ClienteViewModel
 import com.proyectofinal.panterasgym.R
+import com.proyectofinal.panterasgym.clases.Cliente
 import com.proyectofinal.panterasgym.clases.Rutina
 import com.proyectofinal.panterasgym.clases.Ejercicio
 
 class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
-
+    private lateinit var clienteViewModel: ClienteViewModel
+    private val objCliente: Cliente = Cliente()
     private lateinit var recyclerView: RecyclerView
     private lateinit var rutinasAdapter: RutinasAdapter
     private lateinit var rutinasList: MutableList<Rutina>
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        clienteViewModel = ViewModelProvider(requireActivity()).get(ClienteViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        objCliente.cNombre = arguments?.getString("cNombre")!!
+        objCliente.cCorreo = arguments?.getString("cCorreo")!!
+        objCliente.cContrasena = arguments?.getString("cContrasena")!!
+        objCliente.cEdad = arguments?.getInt("cEdad")!!
+        objCliente.cPeso = arguments?.getFloat("cPeso")!!
+        objCliente.cAltura = arguments?.getFloat("cAltura")!!
+        objCliente.cRecordar = arguments?.getBoolean("cRecordar")!!
+        objCliente.cRutinas = arguments?.getSerializable("cRutinas") as ArrayList<Rutina>
+
         val view = inflater.inflate(R.layout.fragment_rutinas, container, false)
 
         // Configurar RecyclerView
@@ -32,7 +52,7 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Inicializar lista de rutinas (puedes cargar desde una base de datos aquí)
-        rutinasList = mutableListOf()
+        rutinasList = objCliente.cRutinas.toMutableList()
         rutinasAdapter = RutinasAdapter(rutinasList, this)
         recyclerView.adapter = rutinasAdapter
 
@@ -68,12 +88,22 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
     fun agregarRutina(rutina: Rutina) {
         rutinasList.add(rutina)
         rutinasAdapter.notifyDataSetChanged()
+        objCliente.cRutinas.add(rutina)
+        actualizarCliente()
     }
+
+//    // Método para eliminar una rutina
+//    fun eliminarRutina(position: Int) {
+//        rutinasList.removeAt(position)
+//        rutinasAdapter.notifyDataSetChanged()
+//    }
 
     // Método para eliminar una rutina
     fun eliminarRutina(position: Int) {
         rutinasList.removeAt(position)
         rutinasAdapter.notifyDataSetChanged()
+        objCliente.cRutinas.removeAt(position) // Eliminar la rutina del cliente
+        actualizarCliente() // Actualizar el ViewModel con los cambios
     }
 
     // Método para actualizar una rutina
@@ -84,7 +114,10 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         rutina.rCreacion = fechaCreacion
         rutina.rDuracion = duracion
         rutina.rEjercicios = ejercicios
+
         rutinasAdapter.notifyItemChanged(position)
+        objCliente.cRutinas[position] = rutina // Actualizar la rutina en el cliente
+        actualizarCliente() // Actualizar el ViewModel con los cambios
     }
 
     // Método para mostrar el formulario de modificar rutina
@@ -117,11 +150,13 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         for (ejercicio in rutina.rEjercicios) {
             val ejercicioView = inflater.inflate(R.layout.item_ejercicio, null)
             val tvNombreEjercicio = ejercicioView.findViewById<TextView>(R.id.tv_nombre_ejercicio)
+            val tvDescripcionEjercicio = ejercicioView.findViewById<TextView>(R.id.tv_descripcion_ejercicio)
             val tvRepeticiones = ejercicioView.findViewById<TextView>(R.id.tv_repeticiones)
             val tvPeso = ejercicioView.findViewById<TextView>(R.id.tv_peso)
             val tvSeries = ejercicioView.findViewById<TextView>(R.id.tv_series)
 
             tvNombreEjercicio.text = ejercicio.eNombre
+            tvDescripcionEjercicio.text = "Descripcion: ${ejercicio.eDescripcion}"
             tvRepeticiones.text = "Repeticiones: ${ejercicio.eRepeticiones}"
             tvPeso.text = "Peso: ${ejercicio.ePeso} kg"
             tvSeries.text = "Series: ${ejercicio.eSeries}"
@@ -131,5 +166,9 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
 
         ejerciciosDialog.setView(dialogView)
         ejerciciosDialog.show()
+    }
+
+    private fun actualizarCliente() {
+        clienteViewModel.cliente.value = objCliente
     }
 }
