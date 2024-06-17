@@ -14,6 +14,13 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tv_descripcion_ejercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion del ejercicio"
+        android:textSize="14sp" />
+
+    <TextView
         android:id="@+id/tv_repeticiones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
