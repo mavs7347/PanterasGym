@@ -27,7 +27,7 @@
     <string name="menu_rutinas_recomendadas">Rutinas recomendadas</string>
     <string name="menu_progreso">Progreso</string>
     <string name="menu_calculadora">Calculadora IMC</string>
-    <string name="menu_tema">Tema de la app</string>
+    <string name="menu_tema">Tema</string>
 
     <string name="stringTituloCalculadora">Calculadora de IMC</string>
     <string name="stringTituloPeso">Peso (kg)</string>
