@@ -1,0 +1,44 @@
+<!-- item_ejercicio.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tv_nombre_ejercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Ejercicio"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_descripcion_ejercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion del ejercicio"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_repeticiones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Repeticiones"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Peso"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_series"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Series"
+        android:textSize="14sp" />
+
+</LinearLayout>

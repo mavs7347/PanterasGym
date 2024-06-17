@@ -1,25 +1,41 @@
 package com.proyectofinal.panterasgym.clases
 
-import java.io.Serializable
+import android.os.Parcel
+import android.os.Parcelable
+data class Ejercicio(
+    var eNombre: String,
+    val eDescripcion: String,
+    var eRepeticiones: Int,
+    var ePeso: Float,
+    var eSeries: Int
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt(),
+        parcel.readFloat(),
+        parcel.readInt()
+    )
 
-class Ejercicio : Serializable {
-    var eNombre: String = ""
-        get() = field
-        set(value) { field = value }
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(eNombre)
+        parcel.writeString(eDescripcion)
+        parcel.writeInt(eRepeticiones)
+        parcel.writeFloat(ePeso)
+        parcel.writeInt(eSeries)
+    }
 
-    var eDescripcion: String = ""
-        get() = field
-        set(value) { field = value }
+    override fun describeContents(): Int {
+        return 0
+    }
 
-    var eRepeticiones: Int = 0
-        get() = field
-        set(value) { field = value }
+    companion object CREATOR : Parcelable.Creator<Ejercicio> {
+        override fun createFromParcel(parcel: Parcel): Ejercicio {
+            return Ejercicio(parcel)
+        }
 
-    var ePeso: Float = 0.0f
-        get() = field
-        set(value) { field = value }
-
-    var eSeries: Int = 0
-        get() = field
-        set(value) { field = value }
+        override fun newArray(size: Int): Array<Ejercicio?> {
+            return arrayOfNulls(size)
+        }
+    }
 }

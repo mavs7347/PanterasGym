@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="?android:attr/windowBackground"
     tools:context=".acceso.LoginActivity">
 
     <TextView
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="@string/stringTituloLogin"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="?android:attr/textColor" />
 
     <LinearLayout
         android:id="@+id/linearLayoutCorreo"
@@ -30,9 +32,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="274dp"
             android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
 
             <EditText
                 android:id="@+id/edtCorreo"
@@ -40,6 +42,7 @@
                 android:layout_height="55dp"
                 android:hint="@string/stringCorreo"
                 android:inputType="textEmailAddress"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -57,9 +60,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="274dp"
             android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
 
             <EditText
                 android:id="@+id/edtContrasena"
@@ -67,33 +70,33 @@
                 android:layout_height="55dp"
                 android:hint="@string/stringContrasena"
                 android:inputType="textPassword"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
     <Switch
         android:id="@+id/stRecordar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/stringRecordar"
-        android:textColor="#AAAAAA" />
-
+        android:textColor="?android:attr/textColorTertiaryInverse" />
     <Button
         android:id="@+id/btnIngresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/stringIngresar"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        style="@style/AppTheme.LightBotones"/>
+        style="@style/AppTheme.LightBotones" />
 
     <TextView
         android:id="@+id/lblRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stringRegistrarse"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:textColor="?android:attr/textColor" />
 
 </LinearLayout>

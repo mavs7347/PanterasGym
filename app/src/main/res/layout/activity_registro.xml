@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="?android:attr/windowBackground"
     tools:context=".acceso.RegistroActivity">
 
     <TextView
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="@string/stringTituloRegistro"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="?android:attr/textColor" />
 
     <LinearLayout
         android:id="@+id/linearLayoutNombre"
@@ -30,9 +32,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="274dp"
             android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
 
             <EditText
                 android:id="@+id/edtNombre"
@@ -40,6 +42,7 @@
                 android:layout_height="55dp"
                 android:hint="@string/stringNombre"
                 android:inputType="textPersonName"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -57,9 +60,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="274dp"
             android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
 
             <EditText
                 android:id="@+id/edtCorreo"
@@ -67,6 +70,7 @@
                 android:layout_height="55dp"
                 android:hint="@string/stringCorreo"
                 android:inputType="textEmailAddress"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -84,9 +88,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="274dp"
             android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
 
             <EditText
                 android:id="@+id/edtContrasena"
@@ -94,33 +98,7 @@
                 android:layout_height="55dp"
                 android:hint="@string/stringContrasena"
                 android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutEdad"
-        android:layout_width="124dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="15dp"
-        android:gravity="bottom|clip_horizontal"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lyt_dtx_edad"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="124dp"
-            android:layout_height="55dp"
-            android:textColorHint="#FF0740C5"
-            app:hintTextColor="#1E0150"
-            app:boxStrokeColor="@color/text_input_box_stroke">
-
-            <EditText
-                android:id="@+id/edtEdad"
-                android:layout_width="124dp"
-                android:layout_height="55dp"
-                android:hint="@string/stringEdad"
-                android:inputType="number"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -144,9 +122,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="124dp"
                 android:layout_height="55dp"
-                android:textColorHint="#FF0740C5"
-                app:hintTextColor="#1E0150"
-                app:boxStrokeColor="@color/text_input_box_stroke">
+                android:textColorHint="?android:attr/textColorSecondary"
+                app:hintTextColor="?android:attr/textColor"
+                app:boxStrokeColor="@color/text_input_box_stroke" >
 
                 <EditText
                     android:id="@+id/edtPeso"
@@ -154,6 +132,7 @@
                     android:layout_height="55dp"
                     android:hint="@string/stringPeso"
                     android:inputType="numberDecimal"
+                    android:textColor="?android:attr/textColorSecondary"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -171,9 +150,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="124dp"
                 android:layout_height="55dp"
-                android:textColorHint="#FF0740C5"
-                app:hintTextColor="#1E0150"
-                app:boxStrokeColor="@color/text_input_box_stroke">
+                android:textColorHint="?android:attr/textColorSecondary"
+                app:hintTextColor="?android:attr/textColor"
+                app:boxStrokeColor="@color/text_input_box_stroke" >
 
                 <EditText
                     android:id="@+id/edtAltura"
@@ -181,27 +160,56 @@
                     android:layout_height="55dp"
                     android:hint="@string/stringAltura"
                     android:inputType="numberDecimal"
+                    android:textColor="?android:attr/textColorSecondary"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutEdad"
+        android:layout_width="124dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:gravity="bottom|clip_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lyt_dtx_edad"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="124dp"
+            android:layout_height="55dp"
+            android:textColorHint="?android:attr/textColorSecondary"
+            app:hintTextColor="?android:attr/textColor"
+            app:boxStrokeColor="@color/text_input_box_stroke" >
+
+            <EditText
+                android:id="@+id/edtEdad"
+                android:layout_width="124dp"
+                android:layout_height="55dp"
+                android:hint="@string/stringEdad"
+                android:inputType="number"
+                android:textColor="?android:attr/textColorSecondary"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/stringRegistrar"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        style="@style/AppTheme.LightBotones"/>
+        style="@style/AppTheme.LightBotones" />
 
     <TextView
         android:id="@+id/lblRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:text="@string/stringRegresar"
-        android:layout_marginTop="35dp" />
+        android:textColor="?android:attr/textColor" />
 
 </LinearLayout>

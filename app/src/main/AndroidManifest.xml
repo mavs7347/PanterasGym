@@ -17,12 +17,13 @@
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
-            android:exported="false"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".acceso.RegistroActivity"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".acceso.LoginActivity"
             android:exported="false" />

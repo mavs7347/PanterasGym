@@ -24,7 +24,7 @@ class Cliente {
     var cRecordar: Boolean = false
         get() {return  field}
         set(value) {field = value}
-    var cRutinas: List<Rutina> = listOf()
+    var cRutinas: ArrayList<Rutina> = arrayListOf()
         get() {return  field}
         set(value) { field = value }
 }

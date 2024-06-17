@@ -2,6 +2,7 @@ package com.proyectofinal.panterasgym.acceso
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -36,19 +37,26 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var ingresar: Button
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        /*
-        // Carga la preferencia del tema.
-        val sharedPreferences = getSharedPreferences("MyApp", MODE_PRIVATE)
-        val darkTheme = sharedPreferences.getBoolean("darkTheme", false)
-
-        // Aplica el tema correcto.
-        if (darkTheme) {
-            setTheme(R.style.AppTheme_Dark)
+        val appPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+        if (appPreferences.contains("theme")) {
+            if (appPreferences.getInt("theme", 0) == 1) {
+                setTheme(R.style.AppTheme)
+            } else if (appPreferences.getInt("theme", 0) == 2) {
+                setTheme(R.style.AppThemeDark)
+            } else if (appPreferences.getInt("theme", 0) == 3) {
+                val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                when (nightModeFlags) {
+                    Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                    Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+                }
+            }
         } else {
-            setTheme(R.style.AppTheme)
+            val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
+                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+            }
         }
-
-         */
 
         super.onCreate(savedInstanceState)
 
@@ -80,6 +88,29 @@ class LoginActivity : AppCompatActivity() {
             objCliente.cAltura = infoRecibida.getFloat("cAltura")!!
             objCliente.cRecordar = infoRecibida.getBoolean("cRecordar")!!
             objCliente.cRutinas = intent.getSerializableExtra("cRutinas") as ArrayList<Rutina>
+        }
+        val sharedPreferences = getSharedPreferences("Datos usuario", MODE_PRIVATE)
+        val recordarSesion = sharedPreferences.getBoolean("cRecordar", false)
+
+        val cambiandoTema = appPreferences.getBoolean("isChangingTheme", false)
+        if (recordarSesion) {
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        } else if (cambiandoTema) {
+            val intent = Intent(applicationContext, MenuActivity::class.java)
+            intent.putExtra("cNombre", objCliente.cNombre)
+            intent.putExtra("cCorreo", objCliente.cCorreo)
+            intent.putExtra("cContrasena", objCliente.cContrasena)
+            intent.putExtra("cEdad", objCliente.cEdad)
+            intent.putExtra("cPeso", objCliente.cPeso)
+            intent.putExtra("cAltura", objCliente.cAltura)
+            intent.putExtra("cRecordar", objCliente.cRecordar)
+            intent.putExtra("cRutinas", ArrayList(objRutinas))
+            startActivity(intent)
+            val appPreferences: SharedPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+            val editorApp: SharedPreferences.Editor = appPreferences.edit()
+            editorApp.putBoolean("isChangingTheme", false)
+            editorApp.apply()
         }
         /*
         ingresar = findViewById(R.id.btnIngresar)
