@@ -78,17 +78,8 @@ class LoginActivity : AppCompatActivity() {
         ingresar = findViewById(R.id.btnIngresar)
         registrarse = findViewById(R.id.lblRegistrarse)
 
-        var infoRecibida = intent.extras
-        if (infoRecibida != null) {
-            objCliente.cNombre = infoRecibida.getString("cNombre")!!
-            objCliente.cCorreo = infoRecibida.getString("cCorreo")!!
-            objCliente.cContrasena = infoRecibida.getString("cContrasena")!!
-            objCliente.cEdad = infoRecibida.getInt("cEdad")!!
-            objCliente.cPeso = infoRecibida.getFloat("cPeso")!!
-            objCliente.cAltura = infoRecibida.getFloat("cAltura")!!
-            objCliente.cRecordar = infoRecibida.getBoolean("cRecordar")!!
-            objCliente.cRutinas = intent.getSerializableExtra("cRutinas") as ArrayList<Rutina>
-        }
+        extrasIntent()
+
         val sharedPreferences = getSharedPreferences("Datos usuario", MODE_PRIVATE)
         val recordarSesion = sharedPreferences.getBoolean("cRecordar", false)
 
@@ -130,6 +121,27 @@ class LoginActivity : AppCompatActivity() {
         eventosClic()
     }
 
+    private fun extrasValidar():Boolean{
+        var infoRecibida = intent.extras
+        if (infoRecibida != null)
+            return true
+        else
+            return false
+    }
+    private fun extrasIntent(){
+        var infoRecibida = intent.extras
+        if (infoRecibida != null) {
+            objCliente.cNombre = infoRecibida.getString("cNombre")!!
+            objCliente.cCorreo = infoRecibida.getString("cCorreo")!!
+            objCliente.cContrasena = infoRecibida.getString("cContrasena")!!
+            objCliente.cEdad = infoRecibida.getInt("cEdad")!!
+            objCliente.cPeso = infoRecibida.getFloat("cPeso")!!
+            objCliente.cAltura = infoRecibida.getFloat("cAltura")!!
+            objCliente.cRecordar = infoRecibida.getBoolean("cRecordar")!!
+            objCliente.cRutinas = infoRecibida.getParcelableArrayList("cRutinas") ?: arrayListOf()
+        }
+    }
+
     private fun eventosClic() {
         var intent: Intent?
         /*
@@ -162,7 +174,10 @@ class LoginActivity : AppCompatActivity() {
                         intent.putExtra("cPeso", objCliente.cPeso)
                         intent.putExtra("cAltura", objCliente.cAltura)
                         intent.putExtra("cRecordar", objCliente.cRecordar)
-                        intent.putExtra("cRutinas", ArrayList(objRutinas))
+                        if (extrasValidar())
+                            intent.putParcelableArrayListExtra("cRutinas",  objCliente.cRutinas)
+                        else
+                            intent.putParcelableArrayListExtra("cRutinas", objRutinas)
                         startActivity(intent)
                     }
                     else {

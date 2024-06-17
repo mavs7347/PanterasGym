@@ -133,7 +133,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             objCliente.cPeso = infoRecibida.getFloat("cPeso")!!
             objCliente.cAltura = infoRecibida.getFloat("cAltura")!!
             objCliente.cRecordar = infoRecibida.getBoolean("cRecordar")!!
-            objCliente.cRutinas = intent.getSerializableExtra("cRutinas") as ArrayList<Rutina>
+            objCliente.cRutinas = infoRecibida.getParcelableArrayList("cRutinas") ?: arrayListOf()
         }
         else {
             val prefs = getSharedPreferences("Datos usuario", MODE_PRIVATE)
@@ -177,6 +177,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 intent.putExtra("cAltura", objCliente.cAltura)
                 intent.putExtra("cRecordar", false)
                 intent.putExtra("cRutinas", ArrayList(objCliente.cRutinas))
+                intent.putParcelableArrayListExtra("cRutinas",  objCliente.cRutinas)
                 startActivity(intent)
                 finish()
             }

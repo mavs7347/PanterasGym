@@ -1,6 +1,6 @@
 package com.proyectofinal.panterasgym.clases
 
-class Cliente {
+open class Cliente {
     var cNombre: String = ""
         get() {return  field}
         set(value) {field = value}

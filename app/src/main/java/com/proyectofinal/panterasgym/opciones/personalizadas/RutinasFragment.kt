@@ -15,14 +15,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.proyectofinal.panterasgym.ClienteViewModel
+import com.proyectofinal.panterasgym.ProgresoViewModel
 import com.proyectofinal.panterasgym.R
 import com.proyectofinal.panterasgym.clases.Cliente
 import com.proyectofinal.panterasgym.clases.Rutina
 import com.proyectofinal.panterasgym.clases.Ejercicio
+import com.proyectofinal.panterasgym.clases.Progreso
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
     private lateinit var clienteViewModel: ClienteViewModel
+    private lateinit var progresoViewModel: ProgresoViewModel
     private val objCliente: Cliente = Cliente()
+    private val objProgreso: Progreso = Progreso()
     private lateinit var recyclerView: RecyclerView
     private lateinit var rutinasAdapter: RutinasAdapter
     private lateinit var rutinasList: MutableList<Rutina>
@@ -30,6 +38,7 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clienteViewModel = ViewModelProvider(requireActivity()).get(ClienteViewModel::class.java)
+        progresoViewModel = ViewModelProvider(requireActivity()).get(ProgresoViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -44,6 +53,15 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         objCliente.cAltura = arguments?.getFloat("cAltura")!!
         objCliente.cRecordar = arguments?.getBoolean("cRecordar")!!
         objCliente.cRutinas = arguments?.getSerializable("cRutinas") as ArrayList<Rutina>
+
+        objProgreso.cNombre = objCliente.cNombre
+        objProgreso.cCorreo = objCliente.cCorreo
+        objProgreso.cContrasena = objCliente.cContrasena
+        objProgreso.cEdad = objCliente.cEdad
+        objProgreso.cPeso = objCliente.cPeso
+        objProgreso.cAltura = objCliente.cAltura
+        objProgreso.cRecordar = objCliente.cRecordar
+        objProgreso.cRutinas = objCliente.cRutinas
 
         val view = inflater.inflate(R.layout.fragment_rutinas, container, false)
 
@@ -62,7 +80,6 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
             // Mostrar formulario para agregar rutina
             mostrarFormulario()
         }
-
         return view
     }
 
@@ -98,12 +115,27 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
 //        rutinasAdapter.notifyDataSetChanged()
 //    }
 
+    // Función para obtener la fecha y hora actual
+    private fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
+
+    // Extensión para formatear la fecha
+    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+
     // Método para eliminar una rutina
     fun eliminarRutina(position: Int) {
         rutinasList.removeAt(position)
         rutinasAdapter.notifyDataSetChanged()
         objCliente.cRutinas.removeAt(position) // Eliminar la rutina del cliente
         actualizarCliente() // Actualizar el ViewModel con los cambios
+        val currentDate = getCurrentDateTime()
+        val formattedDate = currentDate.toString("yyyyMMdd")
+        objProgreso.fecha.add(formattedDate)
+        actualizarProgreso()
     }
 
     // Método para actualizar una rutina
@@ -167,8 +199,10 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         ejerciciosDialog.setView(dialogView)
         ejerciciosDialog.show()
     }
-
     private fun actualizarCliente() {
         clienteViewModel.cliente.value = objCliente
+    }
+    private fun actualizarProgreso() {
+       progresoViewModel.progreso.value = objProgreso
     }
 }
