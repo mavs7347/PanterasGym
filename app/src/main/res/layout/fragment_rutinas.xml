@@ -1,7 +1,8 @@
-<!-- fragment_rutinas.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#021f2f"
+    android:padding="16dp">
 
     <Button
         android:id="@+id/btn_agregar_rutina"
@@ -10,13 +11,21 @@
         android:text="Agregar Rutina"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#369DD6"
+        android:textColor="#ffffff"
+        android:padding="12dp"
+        android:elevation="4dp"
+        android:drawablePadding="8dp" /> <!-- Assuming you have an icon -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/btn_agregar_rutina"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
         android:padding="8dp" />
 
 </RelativeLayout>
