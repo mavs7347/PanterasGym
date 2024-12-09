@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.proyectofinal.panterasgym"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -51,7 +52,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 }

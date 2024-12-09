@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "533696408196",
+    "project_id": "panteras-18a48",
+    "storage_bucket": "panteras-18a48.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533696408196:android:eb74533921c4d414c030d1",
+        "android_client_info": {
+          "package_name": "com.proyectofinal.panterasgym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533696408196-ue1b9q9uu8i8fjt1isp8opnjib2kajgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyectofinal.panterasgym",
+            "certificate_hash": "7801fa77d8221a202a220fea4e3f54e6624f2a00"
+          }
+        },
+        {
+          "client_id": "533696408196-58ig1fdef8dca7ej6c9nmfc30o4sgaoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe-4dlY8RCu3CtunQ04i2rFzeXd18RMI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533696408196-58ig1fdef8dca7ej6c9nmfc30o4sgaoi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

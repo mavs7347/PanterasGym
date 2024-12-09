@@ -2,7 +2,9 @@ package com.proyectofinal.panterasgym.clases
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.firestore.IgnoreExtraProperties
 
+@IgnoreExtraProperties
 data class Ejercicio(
     var eNombre: String = "",
     var eDescripcion: String = "",

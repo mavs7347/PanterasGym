@@ -1,24 +1,23 @@
 package com.proyectofinal.panterasgym.acceso
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.proyectofinal.panterasgym.MenuActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.proyectofinal.panterasgym.R
 import com.proyectofinal.panterasgym.clases.Cliente
-import com.proyectofinal.panterasgym.clases.Rutina
 
 class RegistroActivity : AppCompatActivity() {
-    private lateinit var objCliente: Cliente
-    private val objRutinas: ArrayList<Rutina> = ArrayList()
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     private lateinit var nombre: EditText
     private lateinit var correo: EditText
@@ -31,107 +30,121 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var regresar: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val appPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
-        if (appPreferences.contains("theme")) {
-            if (appPreferences.getInt("theme", 0) == 1) {
-                setTheme(R.style.AppTheme)
-            } else if (appPreferences.getInt("theme", 0) == 2) {
-                setTheme(R.style.AppThemeDark)
-            } else if (appPreferences.getInt("theme", 0) == 3) {
-                val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-                when (nightModeFlags) {
-                    Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
-                    Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
+        try {
+            val appPreferences = getSharedPreferences("app_preferences", MODE_PRIVATE)
+            setThemeFromPreferences(appPreferences, this)
+
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_registro)
+
+            auth = FirebaseAuth.getInstance()
+            db = FirebaseFirestore.getInstance()
+
+            nombre = findViewById(R.id.edtNombre)
+            correo = findViewById(R.id.edtCorreo)
+            contra = findViewById(R.id.edtContrasena)
+            edad = findViewById(R.id.edtEdad)
+            peso = findViewById(R.id.edtPeso)
+            altura = findViewById(R.id.edtAltura)
+
+            registrar = findViewById(R.id.btnRegistrar)
+            regresar = findViewById(R.id.lblRegresar)
+
+            registrar.setOnClickListener { registrarUsuario() }
+            regresar.setOnClickListener {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        } catch (e: Exception) {
+            Log.e("RegistroActivity", "Error durante onCreate: ${e.message}")
+        }
+    }
+
+    fun setThemeFromPreferences(appPreferences: SharedPreferences, activity: AppCompatActivity) {
+        val theme = appPreferences.getInt("theme", 3)
+        when (theme) {
+            1 -> activity.setTheme(R.style.AppTheme)
+            2 -> activity.setTheme(R.style.AppThemeDark)
+            3 -> {
+                val nightModeFlags = activity.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+                if (nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+                    activity.setTheme(R.style.AppThemeDark)
+                } else {
+                    activity.setTheme(R.style.AppTheme)
                 }
             }
-        } else {
-            val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            when (nightModeFlags) {
-                Configuration.UI_MODE_NIGHT_YES -> setTheme(R.style.AppThemeDark)
-                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> setTheme(R.style.AppTheme)
-            }
-        }
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_registro)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        objCliente = Cliente()
-
-        nombre = findViewById(R.id.edtNombre)
-        correo = findViewById(R.id.edtCorreo)
-        contra = findViewById(R.id.edtContrasena)
-        edad = findViewById(R.id.edtEdad)
-        peso = findViewById(R.id.edtPeso)
-        altura = findViewById(R.id.edtAltura)
-
-        registrar = findViewById(R.id.btnRegistrar)
-        regresar = findViewById(R.id.lblRegresar)
-
-        eventosClic()
-    }
-
-    private fun eventosClic() {
-        registrar.setOnClickListener {
-            if (nombre.text.isNotEmpty() && correo.text.isNotEmpty() && contra.text.isNotEmpty() && edad.text.isNotEmpty() && peso.text.isNotEmpty() && altura.text.isNotEmpty()) {
-                registrarDatos()
-            }
-            else {
-                Toast.makeText(this, "Favor de completar los campos.", Toast.LENGTH_LONG).show()
-            }
-        }
-        regresar.setOnClickListener {
-            intent = Intent(applicationContext, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
+    private fun registrarUsuario() {
+        val nombreInput = nombre.text.toString().trim()
+        val correoInput = correo.text.toString().trim()
+        val contraInput = contra.text.toString().trim()
+        val edadInput = edad.text.toString().trim()
+        val pesoInput = peso.text.toString().trim()
+        val alturaInput = altura.text.toString().trim()
 
-    private fun registrarDatos() {
-        try {
-            objCliente?.cNombre = nombre.text.toString()
-            objCliente?.cCorreo = correo.text.toString()
-            objCliente?.cContrasena = contra.text.toString()
-            objCliente?.cEdad = edad.text.toString().toInt()
-            objCliente?.cPeso = peso.text.toString().toFloat()
-            objCliente?.cAltura = altura.text.toString().toFloat()
-            objCliente?.cRecordar = false
-            objCliente?.cRutinas = objRutinas
-
-            Toast.makeText(this, "Usuario registrado.", Toast.LENGTH_SHORT).show()
-            limpiarCampos()
-
-            val intent = Intent(applicationContext, LoginActivity::class.java)
-            intent.putExtra("cNombre", objCliente.cNombre)
-            intent.putExtra("cCorreo", objCliente.cCorreo)
-            intent.putExtra("cContrasena", objCliente.cContrasena)
-            intent.putExtra("cEdad", objCliente.cEdad)
-            intent.putExtra("cPeso", objCliente.cPeso)
-            intent.putExtra("cAltura", objCliente.cAltura)
-            intent.putExtra("cRecordar", objCliente.cRecordar)
-            intent.putExtra("cRutinas", ArrayList(objCliente.cRutinas))
-            startActivity(intent)
-            finish()
-        } catch (e: NumberFormatException) {
-            Toast.makeText(this, "No se pudieron guardar los datos.", Toast.LENGTH_SHORT).show()
+        if (nombreInput.isEmpty() || correoInput.isEmpty() || contraInput.isEmpty() ||
+            edadInput.isEmpty() || pesoInput.isEmpty() || alturaInput.isEmpty()
+        ) {
+            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        // Crear usuario en Firebase Authentication
+        auth.createUserWithEmailAndPassword(correoInput, contraInput)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val usuarioId = auth.currentUser?.uid
+                    if (usuarioId != null) {
+                        guardarDatosEnFirestore(
+                            usuarioId,
+                            nombreInput,
+                            correoInput,
+                            contraInput,
+                            edadInput.toInt(),
+                            pesoInput.toFloat(),
+                            alturaInput.toFloat()
+                        )
+                    }
+                } else {
+                    Toast.makeText(this, "Error al registrar usuario: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
-    private fun limpiarCampos() {
-        nombre.text.clear()
-        nombre.clearFocus()
-        correo.text.clear()
-        correo.clearFocus()
-        contra.text.clear()
-        contra.clearFocus()
-        edad.text.clear()
-        edad.clearFocus()
-        peso.text.clear()
-        peso.clearFocus()
-        altura.text.clear()
-        altura.clearFocus()
+    private fun guardarDatosEnFirestore(
+        userId: String,
+        nombre: String,
+        correo: String,
+        contrasena: String,
+        edad: Int,
+        peso: Float,
+        altura: Float
+    ) {
+        val cliente = Cliente(
+            cNombre = nombre,
+            cCorreo = correo,
+            cContrasena = contrasena,
+            cEdad = edad,
+            cPeso = peso,
+            cAltura = altura,
+            cRecordar = false,
+            cRutinas = arrayListOf()
+        )
+
+        db.collection("Usuarios").document(correo)
+            .set(cliente)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Usuario registrado exitosamente.", Toast.LENGTH_SHORT).show()
+                irALogin()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al guardar datos en Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun irALogin() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }

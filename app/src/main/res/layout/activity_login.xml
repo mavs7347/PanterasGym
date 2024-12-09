@@ -91,6 +91,14 @@
         android:textStyle="bold"
         style="@style/AppTheme.LightBotones" />
 
+    <Button
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Iniciar sesión con Google"
+        android:textColor="@android:color/white" />
+
     <TextView
         android:id="@+id/lblRegistrarse"
         android:layout_width="wrap_content"

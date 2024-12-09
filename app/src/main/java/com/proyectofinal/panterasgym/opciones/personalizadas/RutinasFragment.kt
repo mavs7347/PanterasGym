@@ -45,14 +45,16 @@ class RutinasFragment : Fragment(), RutinasAdapter.RutinaClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        objCliente.cNombre = arguments?.getString("cNombre")!!
-        objCliente.cCorreo = arguments?.getString("cCorreo")!!
-        objCliente.cContrasena = arguments?.getString("cContrasena")!!
-        objCliente.cEdad = arguments?.getInt("cEdad")!!
-        objCliente.cPeso = arguments?.getFloat("cPeso")!!
-        objCliente.cAltura = arguments?.getFloat("cAltura")!!
-        objCliente.cRecordar = arguments?.getBoolean("cRecordar")!!
-        objCliente.cRutinas = arguments?.getSerializable("cRutinas") as ArrayList<Rutina>
+        arguments?.let {
+            objCliente.cNombre = it.getString("cNombre") ?: "Desconocido"
+            objCliente.cCorreo = it.getString("cCorreo") ?: "Desconocido"
+            objCliente.cContrasena = it.getString("cContrasena") ?: ""
+            objCliente.cEdad = it.getInt("cEdad", 0)
+            objCliente.cPeso = it.getFloat("cPeso", 0f)
+            objCliente.cAltura = it.getFloat("cAltura", 0f)
+            objCliente.cRecordar = it.getBoolean("cRecordar", false)
+            objCliente.cRutinas = it.getSerializable("cRutinas") as? ArrayList<Rutina> ?: arrayListOf()
+        }
 
         objProgreso.cNombre = objCliente.cNombre
         objProgreso.cCorreo = objCliente.cCorreo
