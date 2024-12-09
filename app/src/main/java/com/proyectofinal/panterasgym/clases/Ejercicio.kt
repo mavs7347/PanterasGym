@@ -2,12 +2,13 @@ package com.proyectofinal.panterasgym.clases
 
 import android.os.Parcel
 import android.os.Parcelable
+
 data class Ejercicio(
-    var eNombre: String,
-    val eDescripcion: String,
-    var eRepeticiones: Int,
-    var ePeso: Float,
-    var eSeries: Int
+    var eNombre: String = "",
+    var eDescripcion: String = "",
+    var eRepeticiones: Int = 0,
+    var ePeso: Float = 0.0f,
+    var eSeries: Int = 0
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",

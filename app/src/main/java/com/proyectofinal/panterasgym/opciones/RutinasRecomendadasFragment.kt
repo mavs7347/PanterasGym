@@ -18,8 +18,6 @@ class RutinasRecomendadasFragment : Fragment() {
     // Variables Globales
     private var _binding: FragmentRutinasRecomendadasBinding? = null
     private val binding get() = _binding!!
-    private var ejercicio: Ejercicio = Ejercicio()
-    private var rutina: Rutina = Rutina()
     // Componentes
     /*
     private lateinit var rnombre: TextView

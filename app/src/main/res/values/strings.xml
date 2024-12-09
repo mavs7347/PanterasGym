@@ -29,4 +29,14 @@
     <string name="menu_calculadora">Calculadora IMC</string>
     <string name="menu_tema">Tema</string>
 
+    <string name="rutinas_recomendadas_descripcion">Descripción de las rutinas recomendadas</string>
+    <string name="stringTituloCalculadora">Calculadora</string>
+    <string name="stringTituloPeso">Peso</string>
+    <string name="stringTituloAltura">Altura</string>
+    <string name="stringTIndiceMasaCorporal">Índice de Masa Corporal</string>
+    <string name="stringEstado">Estado</string>
+    <string name="stringTituloTema">Tema</string>
+    <string name="stringTemaLight">Tema Claro</string>
+    <string name="stringTemaDark">Tema Oscuro</string>
+    <string name="stringTemaDefault">Tema Predeterminado</string>
 </resources>
