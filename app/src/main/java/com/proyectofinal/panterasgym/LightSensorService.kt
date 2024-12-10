@@ -9,35 +9,28 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.IBinder
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 
 class LightSensorService : Service(), SensorEventListener {
 
     private lateinit var sensorManager: SensorManager
     private var lightSensor: Sensor? = null
 
-    private var overlayView: View? = null
-    private lateinit var windowManager: WindowManager
+    private var isDarkScreenActive = false // Bandera para evitar múltiples instancias
 
     override fun onCreate() {
         super.onCreate()
 
-        // Inicializa el SensorManager
+        // Inicializar el SensorManager
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
-
-        // Inicializa el WindowManager
-        windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
         // Registrar el sensor
         if (lightSensor != null) {
             sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL)
         } else {
             Log.e("LightSensorService", "Sensor de luz no disponible")
-            stopSelf()
+            stopSelf() // Detén el servicio si no hay sensor
         }
-
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
@@ -45,36 +38,44 @@ class LightSensorService : Service(), SensorEventListener {
             val lightLevel = it.values[0] // Nivel de luz en lux
 
             if (lightLevel < 3) {
-                showDarkScreen() // Mostrar pantalla oscura
+                // Nivel de luz bajo
+                if (!isDarkScreenActive) { // Solo lanzar si no está activa
+                    isDarkScreenActive = true
+                    openDarkScreen()
+                }
             } else {
-                removeDarkScreen() // Eliminar pantalla oscura
+                // Nivel de luz alto
+                if (isDarkScreenActive) {
+                    closeDarkScreen()
+                    isDarkScreenActive = false
+                }
             }
         }
     }
 
+    private fun openDarkScreen() {
+        val intent = Intent(this, DarkScreenActivity2::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
+    private fun closeDarkScreen() {
+        // Enviar un Broadcast para cerrar la actividad
+        val intent = Intent("com.proyectofinal.panterasgym.DARK_SCREEN")
+        intent.putExtra("dark_screen", false)
+        sendBroadcast(intent)
+    }
+
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        // No es necesario manejar esto en este caso
+        // No es necesario manejar esto
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        sensorManager.unregisterListener(this) // Asegúrate de liberar el sensor
+        sensorManager.unregisterListener(this) // Liberar el sensor
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        return null // Este servicio no requiere comunicación directa
-    }
-
-    private fun showDarkScreen() {
-        val intent = Intent(this, DarkScreenActivity2::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NO_ANIMATION
-        }
-        startActivity(intent)
-    }
-
-    private fun removeDarkScreen() {
-        // Opcionalmente, finaliza la actividad si es necesario
-        val intent = Intent(this, DarkScreenActivity2::class.java)
-        stopService(intent)
+        return null
     }
 }
