@@ -39,4 +39,139 @@
     <string name="stringTemaLight">Tema Claro</string>
     <string name="stringTemaDark">Tema Oscuro</string>
     <string name="stringTemaDefault">Tema Predeterminado</string>
+
+
+    <!-- Títulos -->
+    <string name="rutina_cardio">Rutina: Cardio</string>
+    <string name="rutina_abdomen">Rutina: Abdomen</string>
+    <string name="rutina_bicep">Rutina: Bíceps</string>
+
+    <!-- Descripciones -->
+    <string name="descripcion_cardio">
+    <![CDATA[
+    Descripción: Rutina recomendada para realizar ejercicios de cardio.
+    Una serie de ejercicios para calentar el cuerpo y quemar grasa.
+    ]]>
+    </string>
+    <string name="descripcion_abdomen">
+    <![CDATA[
+    Descripción: Rutina recomendada para realizar ejercicios de abdomen.
+    Recomendada para definir la figura del abdomen.
+    ]]>
+    </string>
+    <string name="descripcion_bicep">
+    <![CDATA[
+    Descripción: Rutina recomendada para realizar ejercicios de bíceps.
+    Especializada en ganar fuerza, aumentar la musculatura y definir el músculo del bíceps.
+    ]]>
+    </string>
+
+    <!-- Creación -->
+    <string name="creacion_predeterminada">Creación: Predeterminada</string>
+
+    <!-- Duraciones -->
+    <string name="duracion_cardio">Duración: 35 min</string>
+    <string name="duracion_abdomen">Duración: 20 min</string>
+    <string name="duracion_bicep">Duración: 20 min</string>
+
+    <!-- Ejercicio: Bicicleta -->
+    <string name="ejercicio_bicicleta">ciclismo</string>
+    <string name="descripcion_bicicleta">
+    <![CDATA[
+    · Cuando vaya a pedalear, preste atención a sus rodillas. Ellas no deben, en ningún caso, estar abiertas, pues eso las obligará aún más. Compruebe siempre que su cadera y sus rodillas están alineadas con la bicicleta.
+    · Usted debe mantener su columna recta, sin dejar el pecho más adelante que el resto del cuerpo. Por supuesto, para conseguir agarrar el manillar, tendrás que mantener una ligera inclinación. Pero eso no impide que usted mantenga la espalda siempre erguida, con la cabeza siempre mirando hacia adelante.
+    · Sus piernas no deben, al final del pedal, estar completamente extendidas. Es necesario tener una ligera flexión, de aproximadamente 15°, del muslo con la pierna.
+    ]]>
+    </string>
+    <string name="repeticiones_bicicleta">Durante 15 min</string>
+    <string name="peso_no_aplica">No aplica</string>
+    <string name="series_bicicleta">Durante 15 min</string>
+
+    <!-- Ejercicio: Jumping Jack -->
+    <string name="ejercicio_jumping_jack">jumping_jack</string>
+    <string name="descripcion_jumping_jack">
+    <![CDATA[
+    · Este ejercicio puede sustituir los aparatos de cardio como la bicicleta y la estera.
+    · Haga el movimiento sincronizado de abrir y cerrar brazos y piernas abriendo un arco paralelo al sentido longitudinal del cuerpo, de forma que las palmas de las manos se junten sobre la cabeza.
+    · Procure dejar sus piernas levemente flexionadas.
+    ]]>
+    </string>
+    <string name="repeticiones_jumping_jack">12</string>
+    <string name="series_jumping_jack">4</string>
+
+    <!-- Ejercicio: Máquina de Correr -->
+    <string name="ejercicio_maquina_correr">maquina_correr</string>
+    <string name="descripcion_maquina_correr">
+    <![CDATA[
+    · Trote o camine a un ritmo lento por 5 minutos para calentar.
+    · Terminado el entrenamiento, no descuide el descenso. Enfriar la musculatura es igualmente importante, para bajar el ritmo cardíaco y prevenir mareos o sensación de movimiento fuera de la estera.
+    · Para mejorar la respuesta de su cuerpo al entrenamiento, defina una inclinación hasta el 2%. No defina inclinaciones muy empinadas (más del 7%), ya que esto puede sobrecargar el tendón de Aquiles y las pantorrillas.
+    ]]>
+    </string>
+    <string name="repeticiones_maquina_correr">Durante 15 min</string>
+    <string name="series_maquina_correr">Durante 15 min</string>
+
+    <!-- Ejercicio: Saltar la Cuerda -->
+    <string name="ejercicio_saltar_cuerda">salto_cuerda</string>
+    <string name="descripcion_saltar_cuerda">
+    <![CDATA[
+    · La cuerda del tamaño correcto permite completar los saltos sin prender el pie en la cuerda.
+    · Intervalos son la mejor forma de saltar la cuerda para adelgazar, aumentando la quema de calorías.
+    · Personas con lesiones en tobillos, rodillas, cadera o columna deben tener cuidado antes de iniciar el entrenamiento.
+    ]]>
+    </string>
+    <string name="repeticiones_saltar_cuerda">12</string>
+    <string name="series_saltar_cuerda">4</string>
+
+    <!-- Ejercicio: Abdominal Crunch -->
+    <string name="ejercicio_abdominal_crunch">Abdominal Crunch</string>
+    <string name="descripcion_abdominal_crunch">
+    <![CDATA[
+    · Mantenga los pies totalmente apoyados en el suelo durante el ejercicio.
+    · Mantenga las piernas unidas.
+    · Mantenga la mirada recta durante el movimiento.
+    · No apoye la cabeza con las manos para facilitar el movimiento.
+    · Mantenga el abdomen contraído durante todo el movimiento.
+    ]]>
+    </string>
+    <string name="repeticiones_abdominal_crunch">12</string>
+    <string name="series_abdominal_crunch">4</string>
+
+    <!-- Ejercicio: Extensión de Tronco -->
+    <string name="ejercicio_extension_tronco">Extensión de Tronco</string>
+    <string name="descripcion_extension_tronco">
+    <![CDATA[
+    · Ajuste los soportes acolchados de la parte inferior de las piernas para distribuir la presión equilibradamente.
+    · No fuerce el movimiento de descenso si siente un ligero estiramiento de los isquiotibiales y en la zona lumbar.
+    · La amplitud completa del movimiento varía según la persona.
+    ]]>
+    </string>
+    <string name="repeticiones_extension_tronco">12</string>
+    <string name="series_extension_tronco">4</string>
+
+    <!-- Ejercicio: Curl Bíceps -->
+    <string name="ejercicio_curl_biceps">Curl Bíceps</string>
+    <string name="descripcion_curl_biceps">
+    <![CDATA[
+    · Un agarre más abierto concentra el esfuerzo en la región interna del bíceps (cabeza corta), mientras que un agarre cerrado trabaja el exterior del bíceps (cabeza larga).
+    · La barra debe moverse hacia arriba y hacia abajo en un arco cerca del cuerpo. El movimiento debe ocurrir en el codo, no en el hombro.
+    · Mantenga el cuerpo firme durante el movimiento, evite balancearse hacia atrás.
+    ]]>
+    </string>
+    <string name="repeticiones_curl_biceps">12</string>
+    <string name="series_curl_biceps">4</string>
+
+    <!-- Ejercicio: Flexiones -->
+    <string name="ejercicio_flexiones">Flexiones</string>
+    <string name="descripcion_flexiones">
+    <![CDATA[
+    · Mantenga el abdomen contraído durante todo el ejercicio.
+    · Los descensos se deben realizar lentamente para una mayor resistencia del ejercicio.
+    · No deje que su pectoral se apoye en el suelo.
+    · No estire completamente los codos, manténgalos ligeramente flexionados.
+    · Deje las piernas completamente estiradas durante el ejercicio.
+    ]]>
+    </string>
+    <string name="repeticiones_flexiones">12</string>
+    <string name="series_flexiones">4</string>
 </resources>
