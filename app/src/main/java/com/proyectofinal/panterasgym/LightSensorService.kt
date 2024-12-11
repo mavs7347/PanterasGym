@@ -37,7 +37,7 @@ class LightSensorService : Service(), SensorEventListener {
         event?.let {
             val lightLevel = it.values[0] // Nivel de luz en lux
 
-            if (lightLevel < 3) {
+            if (lightLevel < 0.5) {
                 // Nivel de luz bajo
                 if (!isDarkScreenActive) { // Solo lanzar si no está activa
                     isDarkScreenActive = true
