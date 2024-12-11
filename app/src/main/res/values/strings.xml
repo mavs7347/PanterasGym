@@ -28,6 +28,22 @@
     <string name="menu_progreso">Progreso</string>
     <string name="menu_calculadora">Calculadora IMC</string>
     <string name="menu_tema">Tema</string>
+    <string name="menu_nosotros">Sobre nosotros</string>
+
+    <string name="stringTituloMision">Misión</string>
+    <string name="stringMision">En Panteras Gym, nos comprometemos a ofrecer un
+                                ambiente inclusivo y motivador donde cada persona pueda
+                                alcanzar sus objetivos de bienestar físico y mental. A
+                                través de programas de entrenamiento personalizados, equipos
+                                de alta calidad y un equipo de profesionales capacitados,
+                                promovemos un estilo de vida activo y saludable, fomentando
+                                el bienestar integral de nuestros miembros.</string>
+    <string name="stringTituloVision">Visión</string>
+    <string name="stringVision">Ser el gimnasio de referencia en nuestra comunidad,
+                                reconocido por su compromiso con la salud y el bienestar,
+                                ofreciendo un espacio innovador que inspire a las personas a
+                                mejorar su calidad de vida y transformar su salud a largo plazo.</string>
+    <string name="stringTituloUbicacion">Ubicación</string>
 
     <string name="rutinas_recomendadas_descripcion">Descripción de las rutinas recomendadas</string>
     <string name="stringTituloCalculadora">Calculadora</string>

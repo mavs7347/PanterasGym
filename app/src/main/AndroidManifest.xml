@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,18 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDTWntqhJK6JrDl5yox0amFsZ1nlEzuAEs" />
         <activity
             android:name=".clases.RutinaInfo"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
-            android:label="@string/title_activity_menu"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:label="@string/title_activity_menu"></activity>
         <activity
             android:name=".acceso.RegistroActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".acceso.LoginActivity"
             android:exported="false" />

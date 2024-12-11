@@ -22,5 +22,8 @@
         <item
             android:id="@+id/nav_tema"
             android:title="@string/menu_tema" />
+        <item
+            android:id="@+id/nav_nosotros"
+            android:title="@string/menu_nosotros" />
     </group>
 </menu>
