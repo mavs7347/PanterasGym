@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+=======
     xmlns:tools="http://schemas.android.com/tools" >
+>>>>>>> 172b6fe212e157be88fa4c57994924b2af6b0caf
 
     <application
         android:name=".Aplicacion"
@@ -12,6 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+<<<<<<< HEAD
+        tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDTWntqhJK6JrDl5yox0amFsZ1nlEzuAEs" />
+=======
         tools:targetApi="31" >
 
         <service
@@ -23,16 +35,24 @@
             android:name=".DarkScreenActivity2"
             android:theme="@style/Theme.AppCompat"/>
 
+>>>>>>> 172b6fe212e157be88fa4c57994924b2af6b0caf
         <activity
             android:name=".clases.RutinaInfo"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false"
+<<<<<<< HEAD
+            android:label="@string/title_activity_menu"></activity>
+        <activity
+            android:name=".acceso.RegistroActivity"
+            android:exported="false"></activity>
+=======
             android:label="@string/title_activity_menu" />
         <activity
             android:name=".acceso.RegistroActivity"
             android:exported="false" />
+>>>>>>> 172b6fe212e157be88fa4c57994924b2af6b0caf
         <activity
             android:name=".acceso.LoginActivity"
             android:exported="false" />

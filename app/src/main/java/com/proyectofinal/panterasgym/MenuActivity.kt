@@ -24,6 +24,7 @@ import com.proyectofinal.panterasgym.acceso.LoginActivity
 import com.proyectofinal.panterasgym.clases.Cliente
 import com.proyectofinal.panterasgym.databinding.ActivityMenuBinding
 import com.proyectofinal.panterasgym.opciones.CalculadoraFragment
+import com.proyectofinal.panterasgym.opciones.NosotrosFragment
 import com.proyectofinal.panterasgym.opciones.PantallaPrincipalFragment
 import com.proyectofinal.panterasgym.opciones.ProgresoFragment
 import com.proyectofinal.panterasgym.opciones.personalizadas.RutinasFragment
@@ -207,6 +208,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_progreso -> ProgresoFragment()
             R.id.nav_calculadora -> CalculadoraFragment()
             R.id.nav_tema -> TemaFragment()
+            R.id.nav_nosotros -> NosotrosFragment()
             else -> return false
         }
 
